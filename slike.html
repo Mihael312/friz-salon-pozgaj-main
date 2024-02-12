@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Požgaj - Slike</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles.css"/>
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+    />
+</head>
+<body>
+    <header class="absolute inset-x-0 top-0 z-50">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <div class="flex lg:flex-1 content-center">
+                    <a href="index.html" class="content-center flex">
+                        <img class="h-8 w-auto" src="/img/logo.png" alt="" />
+                   
+                    <h1 style="font-family: Dancing script; font-size:xx-large;">Frizerski salon Požgaj</h1>
+                </a>
+            </div>
+            <div class="flex lg:hidden">
+                <button
+                    id="mobile-menu-button-open"
+                    type="button"
+                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                >
+                    <span class="sr-only">Open main menu</span>
+                    <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        />
+                    </svg>
+                </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+              <a href="/index.html#portfolio" class="text-sm font-semibold leading-6 text-gray-900">Radovi</a>
+              <a href="/index.html#about" class="text-sm font-semibold leading-6 text-gray-900">O nama</a>
+              <a href="/index.html#contact" class="text-sm font-semibold leading-6 text-gray-900">Kontakt</a>
+              <a href="/index.html#location" class="text-sm font-semibold leading-6 text-gray-900">Lokacija</a>
+              <a href="/cjenik.html" class="text-sm font-semibold leading-6 text-gray-900">Cjenik</a>
+              <a href="/brands.html" class="text-sm font-semibold leading-6 text-gray-900">Brendovi</a>
+              <a href="/slike.html" class="text-sm font-semibold leading-6 text-gray-900">Slike</a>
+
+            </div>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end"></div>
+        </nav>
+
+        <!-- Mobile menu, show/hide based on menu open state. -->
+        <div id="mobile-menu-panel" class="hidden" role="dialog" aria-modal="true">
+            <!-- Background backdrop, show/hide based on slide-over state. -->
+            <div class="fixed inset-0 z-50"></div>
+            <div
+                class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+            >
+                <div class="flex items-center justify-between">
+                    <div>
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <img class="h-8 w-auto" src="/img/logo.png" alt="" />
+                        </a>
+                        <h1 class="sr-only">Frizerski salon Požgaj</h1>
+                    </div>
+
+
+                    <button
+                        id="mobile-menu-button-close"
+                        type="button"
+                        class="-m-2.5 rounded-md p-2.5 text-gray-700"
+                    >
+                        <span class="sr-only">Close menu</span>
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-20 flex h-fit place-content-center">
+                    <div class="m-auto flex flex-col items-center">
+                      <a
+                      href="/index.html#offer"
+                      class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                      >radovi</a
+                  >
+                  <a
+                      href="/index.html#radovi"
+                      class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                      >Meni</a
+                  >
+                  <a
+                      href="/index.html#about"
+                      class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                      >O nama</a
+                  >
+                  <a
+                      href="/index.html#contact"
+                      class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                      >Kontakt</a
+                  >
+                  <a
+                      href="/index.html#location"
+                      class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                      >Lokacija</a
+                  >
+                  <a
+                      href="/cjenik.html"
+                      class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                      >Cjenik</a
+                  >
+                  <a
+                      href="/brands.html"
+                      class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                      >Brendovi</a
+                  >
+                  <a
+                      href="/slike.html"
+                      class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                      >Slike</a
+                  >
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="d-flex flex-wrap justify-content-evenly h-100 m-5">
+
+        <div id="carouselExampleIndicators1" class="carousel slide align-items-center col-12 col-md-5" style="margin-top: 50px">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div id="carouselExampleIndicators2" class="carousel slide align-items-center col-12 col-md-5" style="margin-top: 50px">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div id="carouselExampleIndicators3" class="carousel slide align-items-center col-12 col-md-5" style="margin-top: 50px">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+        <div id="carouselExampleIndicators4" class="carousel slide align-items-center col-12 col-md-5" style="margin-top: 50px">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="img/frizura1.jpeg" class="d-block w-100" style="height: 90vh;" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators4" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

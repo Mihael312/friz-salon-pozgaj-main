@@ -1,0 +1,901 @@
+
+<!doctype html>
+<html lang="hr">
+    <head>
+        <title>Frizerski salon Požgaj</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="description" content="Dobrodošli na web stranicu Frizerskog salona Požgaj!" />
+        <meta property="og:site_name" content="salonpozgaj.hr" />
+        <meta property="og:title" content="Frizerski salon Požgaj - kosa i šminka" />
+        <meta property="og:description" content="Dobrodošli na web stranicu Frizerskog salona Požgaj!" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://salonpozgaj.hr" /> 
+        <meta property="og:image" content="img/grafika.jpg" />
+        <meta property="og:image:type" content="image/jpg" />
+        <meta property="og:image:width" content="768" />
+        <meta property="og:image:height" content="416" />
+        <meta property="og:image:alt" content="A logo for the Požgaj brand" />
+        <meta name="ahrefs-site-verification" content="297765282885deb70afc6c421293f46d55ddd0b4482652165903106009efc1f5">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" type="text/css" media="screen" href="./styles.css"/>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+        />
+        <script
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""
+        ></script>
+    </head>
+
+    <body class="bg-white">
+        <!-- Header start -->
+        <header class="absolute inset-x-0 top-0 z-50">
+            <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+                <div class="flex lg:flex-1 content-center">
+                        <a href="#" class="content-center flex">
+                            <img class="h-8 w-auto" src="/img/logo.png" alt="" />
+                       
+                        <h1 style="font-family: Dancing script; font-size:xx-large;">Frizerski salon Požgaj</h1>
+                    </a>
+                </div>
+                <div class="flex lg:hidden">
+                    <button
+                        id="mobile-menu-button-open"
+                        type="button"
+                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                    >
+                        <span class="sr-only">Open main menu</span>
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="#radovi" class="text-sm font-semibold leading-6 text-gray-900">Radovi</a>
+                    <a href="#contact" class="text-sm font-semibold leading-6 text-gray-900">O nama</a>
+                    <a href="#location" class="text-sm font-semibold leading-6 text-gray-900">Novosti</a>
+                    <a href="#contact" class="text-sm font-semibold leading-6 text-gray-900">Kontakt</a>
+                    <a href="#location" class="text-sm font-semibold leading-6 text-gray-900">Lokacija</a>
+                    <a href="/cjenik.html" class="text-sm font-semibold leading-6 text-gray-900">Cjenik</a>
+                    <a href="/brands.html" class="text-sm font-semibold leading-6 text-gray-900">Brendovi</a>
+                    <a href="/slike.html" class="text-sm font-semibold leading-6 text-gray-900">Slike</a>
+
+                </div>
+                <div class="hidden lg:flex lg:flex-1 lg:justify-end"></div>
+            </nav>
+
+            <!-- Mobile menu, show/hide based on menu open state. -->
+            <div id="mobile-menu-panel" class="hidden" role="dialog" aria-modal="true">
+                <!-- Background backdrop, show/hide based on slide-over state. -->
+                <div class="fixed inset-0 z-50"></div>
+                <div
+                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+                >
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <a href="#" class="-m-1.5 p-1.5">
+                                <img class="h-8 w-auto" src="/img/logo.png" alt="" />
+                            </a>
+                            <h1 class="sr-only">Frizerski salon Požgaj</h1>
+                        </div>
+                        
+
+
+                        <button
+                            id="mobile-menu-button-close"
+                            type="button"
+                            class="-m-2.5 rounded-md p-2.5 text-gray-700"
+                        >
+                            <span class="sr-only">Close menu</span>
+                            <svg
+                                class="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mt-20 flex h-fit place-content-center">
+                        <div class="m-auto flex flex-col items-center">
+                            <a
+                                href="#offer"
+                                class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                                >Aktualna ponuda</a
+                            >
+                            <a
+                                href="#radovi"
+                                class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                                >Meni</a
+                            >
+                            <a
+                                href="#about"
+                                class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                                >O nama</a
+                            >
+                            <a
+                                href="#contact"
+                                class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                                >Kontakt</a
+                            >
+                            <a
+                                href="#location"
+                                class="mobile-menu-link block rounded-lg px-8 py-4 text-2xl font-semibold leading-10 text-gray-900 hover:bg-gray-50"
+                                >Lokacija</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header end -->
+
+        <main>
+            <!-- Section 0 - Hero start -->
+            <section class="relative isolate">
+                <div
+                    class="absolute left-1/2 right-0 top-0 -z-10 -ml-24 transform-gpu overflow-hidden blur-3xl lg:ml-24 xl:ml-48"
+                    aria-hidden="true"
+                >
+                    <div
+                        class="aspect-[801/1036] w-[50.0625rem] bg-gradient-to-tr from-[#eca18a] to-[#e45f22] opacity-30"
+                        style="
+                            clip-path: polygon(
+                                63.1% 29.5%,
+                                100% 17.1%,
+                                76.6% 3%,
+                                48.4% 0%,
+                                44.6% 4.7%,
+                                54.5% 25.3%,
+                                59.8% 49%,
+                                55.2% 57.8%,
+                                44.4% 57.2%,
+                                27.8% 47.9%,
+                                35.1% 81.5%,
+                                0% 97.7%,
+                                39.2% 100%,
+                                35.2% 81.4%,
+                                97.2% 52.8%,
+                                63.1% 29.5%
+                            );
+                        "
+                    ></div>
+                </div>
+                <div class="overflow-hidden">
+                    <div class="lg:pt-26 mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8">
+                        <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
+                            <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
+                                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl purple-shadow">
+                                    Frizerski salon Požgaj
+                                </h1>
+                                <p class="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
+                                    - Uživajte u opuštajućem okruženju dok radimo na tome da se osjećate ugodno i izgledate neodoljivo. Otkrijte novu razinu frizerskog umijeća i dozvolite nam da vas razmazimo
+                                </p>
+                                <div class="mt-10 flex items-center gap-x-6">
+                                    <a
+                                        href="tel:+385952025050"
+                                        class="rounded-md bg-orange-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-lg hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+                                        >Rezerviraj termin</a
+                                    >
+                                    <a
+                                        href="#radovi"
+                                        class="text-sm font-semibold leading-6 text-gray-900 hover:text-slate-600"
+                                        >Više
+                                    </a>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-20 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0 "
+                            >
+                                <div
+                                    class="block md:hidden ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80"
+                                >
+                                    <div class="relative">
+                                        <img
+                                            src="/img/frizura4.jpeg"
+                                            alt=""
+                                            class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                                        />
+                                        <div
+                                            class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="mr-auto w-44 sm:w-1/2 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
+                                    <div class="relative">
+                                        <img
+                                            src="/img/frizura3.jpeg"
+                                            alt=""
+                                            class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                                        />
+                                        <div
+                                            class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"
+                                        ></div>
+                                    </div>
+                                    <div class="relative">
+                                        <img
+                                            src="/img/frizura1.jpeg"
+                                            alt=""
+                                            class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                                        />
+                                        <div
+                                            class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="w-44 sm:w-1/2 flex-none space-y-8 pt-32 sm:pt-0">
+                                    <div class="relative">
+                                        <img
+                                            src="/img/frizura2.jpeg"
+                                            alt=""
+                                            class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                                        />
+                                        <div
+                                            class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"
+                                        ></div>
+                                    </div>
+                                    <div class="relative">
+                                        <img
+                                            src="/img/frizura5.jpeg"
+                                            alt=""
+                                            class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                                        />
+                                        <div
+                                            class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"
+                                        ></div>
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Section 0 - Hero end -->
+
+            <!-- Section 1 - Exclusive items start -->
+            <section class="py-24 sm:py-36">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto max-w-2xl sm:text-center">
+                        <h2 class="text-lg font-semibold leading-8 tracking-tight text-orange-500">Ekskluzivno</h2>
+                        <h3 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            Naše najpopularnije usluge
+                        </h3>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">
+                            Ovo su neke od usluga zbog kojih se klijenti uvijek vračaju natrag.
+                        </p>
+                    </div>
+                    <ul
+                        role="list"
+                        class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-3 lg:max-w-4xl lg:gap-x-8 xl:max-w-none"
+                    >
+                        <li class="flex flex-col gap-6 xl:flex-col">
+                            <img
+                                class="h-72 flex-none rounded-2xl object-cover shadow-md"
+                                src="/img/sminka.jpeg"
+                                alt=""
+                            />
+                            <div class="flex-auto">
+                                <h3 class="text-center text-xl font-semibold leading-8 tracking-tight text-gray-900">
+                                    Frizura za gosti
+                                </h3>
+                            </div>
+                        </li>
+
+                        <li class="flex flex-col gap-6 xl:flex-col ">
+                            <img
+                                class="h-72 flex-none rounded-2xl object-cover shadow-md"
+                                src="/img/valovi i boja.jpeg"
+                                alt=""
+                            />
+                            <div class="flex-auto">
+                                <h3 class="text-center text-xl font-semibold leading-8 tracking-tight text-gray-900">
+                                    Valovi
+                                </h3>
+                            </div>
+                        </li>
+
+                        <li class="flex flex-col gap-6 xl:flex-col">
+                            <img
+                                class="h-72 flex-none rounded-2xl object-cover shadow-md"
+                                src="/img/obrve.jpeg"
+                                alt=""
+                            />
+                            <div class="flex-auto">
+                                <h3 class="text-center text-xl font-semibold leading-8 tracking-tight text-gray-900">
+                                    obrve
+                                </h3>
+                            </div>
+                        </li>
+
+                        <!-- More people... -->
+                    </ul>
+                </div>
+            </section>
+            <!-- Section 1 - Exclusive items end -->
+
+            <!-- Section 2 - Sandra about start -->
+            <section id="about" class="py-24 sm:py-36">
+                <div class="relative isolate">
+                    <div class="mx-auto max-w-7xl">
+                        <div
+                            class="mx-auto flex max-w-2xl flex-col gap-16 bg-white/5 px-6 ring-1 ring-white/10 sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center xl:gap-x-20"
+                        >
+                            <img
+                                class="hidden h-96 w-full flex-none rounded-2xl object-cover shadow-xl sm:block lg:aspect-square lg:h-auto lg:max-w-sm"
+                                src="img/patricija.jpeg"
+                                alt=""
+                            />
+                            <div class="w-full flex-auto">
+                                <h3 class="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl purple-shadow">
+                                    Sandra Požgaj
+                                </h3>
+                                <p class="mt-6 text-lg leading-8 text-gray-600">
+                                    <span class="font-black">Sandra Požgaj</span>, osnivačica i srce salonu, već više od dva desetljeća utjelovljuje stručnost i inovaciju u svijetu frizura. S obiljem iskustva i pristupom koji odiše toplinom i strpljenjem, Sandra nije samo frizerka - ona je umjetnica koja svojim rukama stvara više od običnih frizura; stvara umjetnička djela koja odražavaju osobnost i stil svakog pojedinog klijenta. Njena pažnja prema detaljima i neiscrpna energija za učenje novih tehnika čine je ne samo stupom frizerskog salona 'Požgaj', već i inspiracijom za cijelu lokalnu zajednicu.
+                                </p>
+                               
+                              
+                            </div>
+                            <img
+                                class="visible h-96 w-full flex-none rounded-2xl object-cover shadow-xl sm:hidden lg:aspect-square lg:h-auto lg:max-w-sm"
+                                src="img/patricija.jpeg"
+                                alt=""
+                            />
+                        </div>
+                    </div>
+                    <div
+                        class="absolute inset-x-0 -top-16 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
+                        aria-hidden="true"
+                    >
+                        <div
+                            class="aspect-[1318/752] w-[82.375rem] flex-none bg-gradient-to-r from-[#eca18a] to-[#e45f22] opacity-20"
+                            style="
+                                clip-path: polygon(
+                                    73.6% 51.7%,
+                                    91.7% 11.8%,
+                                    100% 46.4%,
+                                    97.4% 82.2%,
+                                    92.5% 84.9%,
+                                    75.7% 64%,
+                                    55.3% 47.5%,
+                                    46.5% 49.4%,
+                                    45% 62.9%,
+                                    50.3% 87.2%,
+                                    21.3% 64.1%,
+                                    0.1% 100%,
+                                    5.4% 51.1%,
+                                    21.4% 63.9%,
+                                    58.9% 0.2%,
+                                    73.6% 51.7%
+                                );
+                            "
+                        ></div>
+                    </div>
+                </div>
+            </section>
+            <!-- Section 2 - Sandra about end -->
+
+
+
+
+
+             <!-- Section 2 - Patricija about start -->
+             <section id="offer" class="py-15 sm:py-30">
+                <div class="relative isolate">
+                    <div class="mx-auto max-w-7xl">
+                        <div
+                            class="mx-auto flex max-w-2xl flex-col gap-16 bg-white/5 px-6 ring-1 ring-white/10 sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center xl:gap-x-20"
+                        >
+                        <img
+                        class="visible h-96 w-full flex-none rounded-2xl object-cover shadow-xl sm:hidden lg:aspect-square lg:h-auto lg:max-w-sm"
+                        src="img/patricija.jpeg"
+                        alt=""
+                    />
+                           
+                            <div class="w-full flex-auto">
+                                <h3 class="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl purple-shadow">
+                                    Patricija Požgaj
+                                </h3>
+                                <p class="mt-6 text-lg leading-8 text-gray-600">
+                                    <span class="font-black">Patricija Požgaj</span>, kći Sandre Požgaj, u frizerski svijet zakoračila je s istim žarom i posvećenošću koju je naslijedila od svoje majke. Njezina mladenačka kreativnost i svjež pogled na najnovije trendove donose novu dimenziju salonu. Patricija predstavlja spoj klasičnog obrazovanja i modernog stila, što je čini pravim izborom za klijente koji traže inovacije uz očuvanje tradicije. Njena sposobnost da sluša i razumije želje klijenata, pretvarajući ih u stvarnost, osigurava da svaki posjet salonu bude jedinstveno iskustvo koje se pamti.
+                                </p>
+                               
+                                
+                            </div>
+                            <img
+                            class="hidden h-96 w-full flex-none rounded-2xl object-cover shadow-xl sm:block lg:aspect-square lg:h-auto lg:max-w-sm"
+                            src="img/patricija.jpeg"
+                            alt=""
+                        />
+
+
+                           
+                        </div>
+                    </div>
+                    <div
+                        class="absolute inset-x-0 -top-16 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
+                        aria-hidden="true"
+                    >
+                        <div
+                            class="aspect-[1318/752] w-[82.375rem] flex-none bg-gradient-to-r from-[#eca18a] to-[#e45f22] opacity-20"
+                            style="
+                                clip-path: polygon(
+                                    73.6% 51.7%,
+                                    91.7% 11.8%,
+                                    100% 46.4%,
+                                    97.4% 82.2%,
+                                    92.5% 84.9%,
+                                    75.7% 64%,
+                                    55.3% 47.5%,
+                                    46.5% 49.4%,
+                                    45% 62.9%,
+                                    50.3% 87.2%,
+                                    21.3% 64.1%,
+                                    0.1% 100%,
+                                    5.4% 51.1%,
+                                    21.4% 63.9%,
+                                    58.9% 0.2%,
+                                    73.6% 51.7%
+                                );
+                            "
+                        ></div>
+                    </div>
+                </div>
+            </section>
+            <!-- Section 2 - Patricija about end -->
+            
+
+            <!-- Section 3 - Radovi start -->
+            <section id="radovi" class="py-24 sm:py-36">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto max-w-2xl sm:text-center">
+                        <h3 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            Naši radovi
+                        </h3>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">
+                            Salon je orijentiran na žensku i mušku klijantelu, ali i za one najmlađe.
+                        </p>
+                        
+                    </div>
+                    <ul
+                        role="list"
+                        class="mx-auto mt-28 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4"
+                    >
+                        <li class="flex flex-col items-center">
+                            <img
+                                class="aspect-[14/13] rounded-2xl object-cover"
+                                alt=""
+                                src="/img/frizura1.jpeg"
+                            />
+                            <h3 class="mt-6 text-center text-lg font-semibold tracking-tight text-gray-700">
+                                Cooper
+                            </h3>
+                        </li>
+                        <li class="flex flex-col items-center">
+                            <img
+                                class="aspect-[14/13] rounded-2xl object-cover"
+                                src="/img/frizura2.jpeg"
+                                alt=""
+                            />
+                            <h3 class="mt-6 text-center text-lg font-semibold tracking-tight text-gray-700">
+                                Ravno
+                            </h3>
+                        </li>
+                        <li class="flex flex-col items-center">
+                            <img
+                                class="aspect-[14/13] rounded-2xl object-cover"
+                                src="/img/frizura3.jpeg"
+                                alt=""
+                            />
+                            <h3 class="mt-6 text-center text-lg font-semibold tracking-tight text-gray-700">
+                                Punđica
+                            </h3>
+                        </li>
+                        <li class="flex flex-col items-center">
+                            <img
+                                class="aspect-[14/13] rounded-2xl object-cover"
+                                src="/img/frizura4.jpeg"
+                                alt=""
+                            />
+                            <h3 class="mt-6 text-center text-lg font-semibold tracking-tight text-gray-700">
+                                valovi
+                            </h3>
+                        </li>
+                    </ul>
+                    
+                    <p class="mx-auto max-w-2xl sm:text-center mt-6 text-lg leading-8 text-gray-600">Osim klasičnih usluga poput bojanja, modeliranja frizura, minivala i šišanja, Salon od 2020.godine nudi puno više od toga. Od tada se ovdje, uz friziranje, možete našminkati za posebne prilike te urediti i obojati obrve prirodnom bojom kanom. </p>
+                </div>
+            </section>
+            <!-- Section 3 - Radovi end -->
+   
+
+            <!-- Section 4 - Testemonials start -->
+            <section class="py-24 sm:py-36">
+                <div class="relative isolate bg-white">
+                    <div
+                        class="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl"
+                        aria-hidden="true"
+                    >
+                        <div
+                            class="ml-[max(50%,38rem)] aspect-[1313/771] w-[82.0625rem] bg-gradient-to-tr from-[#eca18a] to-[#e45f22]"
+                            style="
+                                clip-path: polygon(
+                                    74.1% 44.1%,
+                                    100% 61.6%,
+                                    97.5% 26.9%,
+                                    85.5% 0.1%,
+                                    80.7% 2%,
+                                    72.5% 32.5%,
+                                    60.2% 62.4%,
+                                    52.4% 68.1%,
+                                    47.5% 58.3%,
+                                    45.2% 34.5%,
+                                    27.5% 76.7%,
+                                    0.1% 64.9%,
+                                    17.9% 100%,
+                                    27.6% 76.8%,
+                                    76.1% 97.7%,
+                                    74.1% 44.1%
+                                );
+                            "
+                        ></div>
+                    </div>
+                    <div
+                        class="absolute inset-x-0 top-0 -z-10 flex transform-gpu overflow-hidden pt-32 opacity-25 blur-3xl sm:pt-40 xl:justify-end"
+                        aria-hidden="true"
+                    >
+                        <div
+                            class="ml-[-22rem] aspect-[1313/771] w-[82.0625rem] flex-none origin-top-right rotate-[30deg] bg-gradient-to-tr from-[#eca18a] to-[#e45f22] xl:ml-0 xl:mr-[calc(50%-12rem)]"
+                            style="
+                                clip-path: polygon(
+                                    74.1% 44.1%,
+                                    100% 61.6%,
+                                    97.5% 26.9%,
+                                    85.5% 0.1%,
+                                    80.7% 2%,
+                                    72.5% 32.5%,
+                                    60.2% 62.4%,
+                                    52.4% 68.1%,
+                                    47.5% 58.3%,
+                                    45.2% 34.5%,
+                                    27.5% 76.7%,
+                                    0.1% 64.9%,
+                                    17.9% 100%,
+                                    27.6% 76.8%,
+                                    76.1% 97.7%,
+                                    74.1% 44.1%
+                                );
+                            "
+                        ></div>
+                    </div>
+                    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                        <div class="mx-auto max-w-xl sm:text-center">
+                            <h2 class="text-lg font-semibold leading-8 tracking-tight text-orange-500">
+                                Pohvale i priznanja
+                            </h2>
+                            <h3 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                                Izjave kupaca o našoj usluzi i kvaliteti
+                            </h3>
+                        </div>
+                        <div
+                            class="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4"
+                        >
+                            <figure
+                                class="col-span-2 hidden sm:block sm:rounded-2xl sm:bg-white sm:shadow-lg sm:ring-1 sm:ring-gray-900/5 xl:col-start-2 xl:row-end-1"
+                            >
+                                <blockquote class="p-12 text-xl font-semibold leading-8 tracking-tight text-gray-900">
+                                    <p>
+                                        “Integer id nunc sit semper purus. Bibendum at lacus ut arcu blandit montes
+                                        vitae auctor libero. Hac condimentum dignissim nibh vulputate ut nunc. Amet nibh
+                                        orci mi venenatis blandit vel et proin. Non hendrerit in vel ac diam.”
+                                    </p>
+                                </blockquote>
+                                <figcaption class="flex items-center gap-x-4 border-t border-gray-900/10 px-6 py-4">
+                                    <img
+                                        class="h-10 w-10 flex-none rounded-full bg-gray-50"
+                                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80"
+                                        alt=""
+                                    />
+                                    <div class="flex-auto">
+                                        <div class="font-semibold">Brenna Goyette</div>
+                                    </div>
+                                    <img
+                                        class="h-10 w-auto flex-none"
+                                        src="https://tailwindui.com/img/logos/savvycal-logo-gray-900.svg"
+                                        alt=""
+                                    />
+                                </figcaption>
+                            </figure>
+                            <div class="space-y-8 xl:contents xl:space-y-0">
+                                <div class="space-y-8 xl:row-span-2">
+                                    <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+                                        <blockquote class="text-gray-900">
+                                            <p>
+                                                “Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus
+                                                nihil. Aut enim doloremque et ipsam.”
+                                            </p>
+                                        </blockquote>
+                                        <figcaption class="mt-6 flex items-center gap-x-4">
+                                            <img
+                                                class="h-10 w-10 rounded-full bg-gray-50"
+                                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                alt=""
+                                            />
+                                            <div>
+                                                <div class="font-semibold">Leslie Alexander</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+
+                                    <!-- More testimonials... -->
+                                </div>
+                                <div class="space-y-8 xl:row-start-1">
+                                    <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+                                        <blockquote class="text-gray-900">
+                                            <p>
+                                                “Aut reprehenderit voluptatem eum asperiores beatae id. Iure molestiae
+                                                ipsam ut officia rem nulla blanditiis.”
+                                            </p>
+                                        </blockquote>
+                                        <figcaption class="mt-6 flex items-center gap-x-4">
+                                            <img
+                                                class="h-10 w-10 rounded-full bg-gray-50"
+                                                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                alt=""
+                                            />
+                                            <div>
+                                                <div class="font-semibold">Lindsay Walton</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+
+                                    <!-- More testimonials... -->
+                                </div>
+                            </div>
+                            <div class="space-y-8 xl:contents xl:space-y-0">
+                                <div class="space-y-8 xl:row-start-1">
+                                    <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+                                        <blockquote class="text-gray-900">
+                                            <p>
+                                                “Voluptas quos itaque ipsam in voluptatem est. Iste eos blanditiis
+                                                repudiandae. Earum deserunt enim molestiae ipsum perferendis recusandae
+                                                saepe corrupti.”
+                                            </p>
+                                        </blockquote>
+                                        <figcaption class="mt-6 flex items-center gap-x-4">
+                                            <img
+                                                class="h-10 w-10 rounded-full bg-gray-50"
+                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                alt=""
+                                            />
+                                            <div>
+                                                <div class="font-semibold">Tom Cook</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+
+                                    <!-- More testimonials... -->
+                                </div>
+                                <div class="space-y-8 xl:row-span-2">
+                                    <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+                                        <blockquote class="text-gray-900">
+                                            <p>
+                                                “Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit
+                                                incidunt excepturi rerum voluptatem minus harum.”
+                                            </p>
+                                        </blockquote>
+                                        <figcaption class="mt-6 flex items-center gap-x-4">
+                                            <img
+                                                class="h-10 w-10 rounded-full bg-gray-50"
+                                                src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                alt=""
+                                            />
+                                            <div>
+                                                <div class="font-semibold">Leonard Krasner</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+
+                                    <!-- More testimonials... -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Section 4 - Testemonials end -->
+
+            <!-- Section 5 - About us and contact start -->
+            <section id="contact" class="py-24 sm:py-36">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="max-w-lg md:grid md:max-w-none md:grid-cols-2 md:gap-20">
+                        <div class="pb-24 sm:pb-0 md:pb-0">
+                            <a href="/brands.html"><h2 class="text-lg font-semibold leading-8 tracking-tight text-orange-500">Kvaliteta</h2></a>
+                            <h3 class="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">Naša metodologija</h3>
+                            <div class="mt-5">
+                                <p class="mb-3 text-lg text-gray-500">
+                                    Stalnim edukacijama, praćenjem najnovijih svjetskih trendova i koristeći se samo proizvodima najviše kvalitete, Sandra i Patricija, duo stručnjaka za kosu i ljepotu posvećen je maksimalnom zadovoljenju svih vaših potreba. Jer ovdje, u salonu Požgaj, nije samo o izgledu – o ljubavi prema sebi i vlastitom blagostanju je riječ. Vaša kosa, vaše pravilo – mi smo tu da to pravilo učinimo stvarnošću."
+                                </p>
+                            
+                            </div>
+                        </div>
+                        <div class="pt-24 sm:pt-20 md:pl-16 md:pt-0">
+                            <h2 class="text-lg font-semibold leading-8 tracking-tight text-orange-500">Informacije</h2>
+                            <h3 class="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">
+                                Kako stupiti u kontakt?
+                            </h3>
+                            <div class="mt-3"></div>
+                            <div class="mt-5">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            class="h-6 w-6 text-gray-400"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3 text-base text-gray-500">
+                                        <p class=""><span class="pr-5 underline">Pon - Sri & Pet</span>01:00h - 07:00h</p>
+                                        <p class="mt-2"><span class="pr-5 underline">Sub</span>10:00h - 02:00h</p>
+                                    </div>
+                                </div>
+                                <div class="mt-6 flex">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            class="h-6 w-6 text-gray-400"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3 text-base text-gray-500">
+                                        <p>+385 95 202 5050</p>
+                                    </div>
+                                </div>
+                                <div class="mt-6 flex">
+                                    <div class="flex-shrink-0">
+                                        <svg
+                                            class="h-6 w-6 text-gray-400"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3 text-base text-gray-500">
+                                        <p href="mailto:friz.salon.sandra@gmail.com">friz.salon.sandra@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Section 5 - About us and contact end -->
+
+            <!-- Section 6 - Map start -->
+            <section id="location" class="py-24 sm:py-24">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto max-w-2xl sm:text-center">
+                        <h2 class="text-lg font-semibold leading-8 tracking-tight text-orange-500">Lokacija</h2>
+                        <h3 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Kako doći do nas?</h3>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">
+                            Lako nas možete pronaći na adresi  Ul. bana Jelačića 52 u Doljanu. Svega 10
+                            minuta vožnje automobilom od centra Varaždina, jednostavno slijedite upute na karti i
+                            stižete direktno do nas.
+                        </p>
+                    </div>
+                </div>
+                <div id="map"></div>
+            </section>
+            <!-- Section 6 - Map end -->
+        </main>
+
+        <!-- Footer start -->
+        <footer class="bg-white">
+            <div class="mx-auto max-w-7xl overflow-hidden px-6 py-10 sm:py-14 lg:px-8">
+                <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+                    <div class="flex justify-center pb-6">
+                        <a href="#offer" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Aktualna ponuda</a>
+                    </div>
+                    <div class="flex justify-center pb-6">
+                        <a href="#menu" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Meni</a>
+                    </div>
+                    <div class="flex justify-center pb-6">
+                        <a href="#contact" class="text-sm leading-6 text-gray-600 hover:text-gray-900">O nama</a>
+                    </div>
+                    <div class="flex justify-center pb-6">
+                        <a href="#contact" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Kontakt</a>
+                    </div>
+                    <div class="flex justify-center pb-6">
+                        <a href="#location" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Lokacija</a>
+                    </div>
+                </nav>
+                <div class="mt-10 flex justify-center space-x-10">
+                    <a href="https://www.facebook.com/SalonPozgaj/" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Facebook</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd"
+                            />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/salonpozgaj/" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd"
+                            />
+                        </svg>
+                    </a>
+                   
+                </div>
+                <p class="mt-10 text-center text-xs leading-5 text-gray-500">
+                    frizerski salon Požgaj d.o.o. &copy; 2024 <br>  Sva prava pridržana.
+                </p>
+            </div>
+        </footer>
+        <!-- Footer end -->
+        <script src="./index.js"></script>
+        <script>
+            var map = L.map("map").setView([46.2489, 16.33656], 15);
+            var marker = L.marker([46.2489, 16.33656]).addTo(map);
+            L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        </script>
+    </body>
+</html>

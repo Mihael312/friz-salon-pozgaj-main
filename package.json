@@ -1,0 +1,11 @@
+{
+    "name": "application-name",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "npm start"
+    },
+    "dependencies": {
+        "tailwind": "^4.0.0"
+    }
+}
